@@ -1,0 +1,38 @@
+#Etienne Soltys
+#Init
+#Functions
+def name():
+    print("Which Gilmore Girls Character are you?")
+    print("Answer the questions to figure it out")
+    ans = input("Are you a Gilmore?(yes or no)")
+    if ans =="no":
+        ans = input("town or city?")
+        if ans == "city":
+            ans = input("Which do you value more: experiences or knowledge")
+            if ans == "experiences":
+                print ("You are Logan")
+            else:
+                print ("You are Jess")
+        if ans == "town":
+            ans = input ("perseverance or indecision")
+            if ans == "perseverance":
+                print("You are Kirk!")
+            else:
+                print ("You are Dean...")
+    if ans == "yes":
+        ans = input("Which drink do you prefer: coffee or tea")
+        if ans == "coffee":
+            ans = input("Do you prefer TV, or writing?")
+            if ans =="TV":
+                print("You are Lorelai")
+            else:
+                print("You are Rory")
+        else:
+            ans = input("Which season do you prefer: autumn or winter")
+            if ans == "autumn":
+                print("You are Richard Gilmore")
+            else:
+                print("You are Emily Gilmore")
+#Main
+name()
+
