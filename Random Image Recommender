@@ -1,0 +1,40 @@
+#initialize
+import random
+from PIL import Image
+import requests
+from io import BytesIO
+import time
+
+#functions
+movieList = ["https://tinyurl.com/bdd7f75v",#Big Hero 6. Accessed from. Disney. https://movies.disney.com/a-z
+             "https://tinyurl.com/33hprmzn",#Brave. Accessed from. Disney. https://movies.disney.com/a-z
+             "https://tinyurl.com/52pvvneh",#Cars. Accessed from. Disney. https://movies.disney.com/a-z
+             "https://tinyurl.com/mw6p3p9p",#Encanto. Accessed from. Disney. https://movies.disney.com/a-z
+             "https://tinyurl.com/2szcyymn",]#Tangled. Accessed from Disney. https://movies.disney.com/a-z
+
+Explanations = ["This movie is technology based, about acceptance, and the importance of family", #Description of Big Hero 6
+                "This movie is about the importance of family, being true to one's self, and adventure. Takes place in Scottland",#description of Brave
+                "This movie is about the importance of beleiving in ones self, and friendship. Takes place in America",#Description of cars
+                "This is a musical about the importance of family, and is based around magic.",#Encanto
+                "This movie is about a stolen princess trapped in a tower her whole, life and her journey to freedom. Contains many lovable characters"]#Tangled
+
+def open_image(url):
+    response = requests.get(url) #HTTP request is made
+    img = Image.open(BytesIO(response.content))
+    img.show()#Shows the random image
+def Recommendation():
+    print("welcome to disney movie recommender")
+    while True: #starts loop
+        ans = input("Would you like a recommendation:")
+        if ans == "yes":
+            rec = random.randint(0,4)
+            time.sleep(1)
+            print("Thinking...")#loads the image
+            time.sleep(1)
+            open_image(movieList[rec])#Prints image
+            print(Explanations[rec])#Prints description
+        if ans == "no":
+            print("Thanks for using Movie Recommender! Enjoy your movie.")
+            break #ends program
+#main
+Recommendation()
