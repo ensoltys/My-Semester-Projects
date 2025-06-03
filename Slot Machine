@@ -1,0 +1,52 @@
+#Etienne Soltys
+#Int
+import random
+import time
+credits = 100
+plays = 0
+#Functions
+symbols = ["✿","💗","7","🌟","♢", "❄", "☀"]#list of potential sybols to be spun
+def game():#game function
+    global credits #makes this variable work across this function
+    print("Welcome to Slot Machine!")
+    print("You have: " + str(credits) + " credits")#Tells players how many credits they have to start with
+    while True: #loops until the player quits
+        global plays #variable for the number of plays/spins
+        if credits == int("0"): #if statement for when credits run out
+            print("You're out of credits. If you want to keep playing go buy some more.")
+            move == "quit"#ends the loop (quit is a function later that ends the loop)
+        move = input("Would you like to spin or quit?")
+        if move == "spin":
+            bet = input("how many credits would you like to bet?") #determines how many credits a player would like to bet(can be any number)
+            credits = credits-int(bet)#to play they need to lose the amount of credits they bet
+            plays = plays + 1
+            print("spinning...")
+            time.sleep(1)
+            print("spinning...")
+            time.sleep(1)
+            print("spinning...")
+            item1 = str(random.choices(symbols, weights =[2,2,1,2,2,2,2]))#determine which the opjects will be
+            item2 = str(random.choices(symbols, weights =[2,2,1,2,2,2,2]))
+            item3 = str(random.choices(symbols, weights =[2,2,1,2,2,2,2]))
+            print("You got: "+ item1 + item2 + item3)#tells the player what they got
+            if item1 == item2 or item1 == item3 or item2 == item3: #if they get a match
+                credits = credits + int(bet*2)#they get two times the amout they bet
+                print("You got a match!")
+                print("credits: " + str(credits))#tells them the updated amount of credits they have
+            if item1 == item2 and item1 == item3 and item1 == "7":#if they get three 7s
+                print("JACKPOT!!")
+                credits = credits + int(bet*10) #get 10 times the credits they bet
+                print("credits: " + str(credits))#update players on their number of credits
+            if item1 == item2 and item1 == item3:#a match of 3 that are not 7s
+                print("YOU WON!")
+                credits = credits + int(bet*5)#get 5 times the amount they bet
+                print("credits: " + str(credits))#updates player on their current number of credits
+            if item1 != item2 and item1 != item3 and item2 != item3:#if they do not spin any matches
+                print("You lost!")
+                print("credits: " + str(credits))#updates player on current number of credits
+        if move == "quit":
+            print("Thanks for playing")
+            break
+#main
+game()
+
